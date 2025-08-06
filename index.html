@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company ERP System</title>
+    <title>SGX Minerals ERP System</title>
     <style>
         /* Global Styles */
         body {
@@ -90,50 +90,59 @@
         }
         
         /* Dashboard Styles */
-        .modules-grid {
+        .report-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .report-title {
+            font-size: 20px;
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .report-date {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-bottom: 20px;
         }
         
-        .module-card {
+        .metric-card {
             background-color: white;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
         }
         
-        .module-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .module-card h3 {
+        .metric-card h3 {
             margin-top: 0;
             color: #3498db;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
         
-        .module-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
             color: #2c3e50;
         }
         
-        .module-description {
+        .metric-description {
             color: #666;
             line-height: 1.5;
-        }
-        
-        .quick-stats {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         /* Equipment Management Styles */
@@ -213,99 +222,12 @@
         }
         
         /* Plant Operations Styles */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .metric-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .metric-card h3 {
-            margin-top: 0;
-            color: #3498db;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        
-        .metric-value {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 15px 0;
-            color: #2c3e50;
-        }
-        
-        .metric-description {
-            color: #666;
-        }
-        
         .production-section {
             background-color: white;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             margin-top: 30px;
-        }
-        
-        /* FTD Reports Styles */
-        .report-filters {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        
-        .filter-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .filter-group {
-            flex: 1;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #555;
-        }
-        
-        select, input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        
-        button {
-            background-color: #2c3e50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        
-        .generate-button {
-            margin-top: 10px;
-        }
-        
-        .report-results {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         /* Table Styles */
@@ -334,13 +256,25 @@
         .highlight {
             background-color: #fffde7;
         }
+        
+        .positive {
+            color: #27ae60;
+        }
+        
+        .negative {
+            color: #e74c3c;
+        }
+        
+        .neutral {
+            color: #f39c12;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">COMPANY ERP SYSTEM</div>
+        <div class="logo">SGX MINERALS ERP SYSTEM</div>
         <div class="user-info">
-            <span>Welcome, Admin</span>
+            <span>Welcome, Operations Manager</span>
             <i class="fa fa-user-circle" style="font-size:24px"></i>
         </div>
     </div>
@@ -350,82 +284,52 @@
             <button class="tab-btn active" onclick="openTab('dashboard')">Dashboard</button>
             <button class="tab-btn" onclick="openTab('equipment')">Equipment</button>
             <button class="tab-btn" onclick="openTab('quarry')">Quarry</button>
-            <button class="tab-btn" onclick="openTab('plant')">Plant Operations</button>
-            <button class="tab-btn" onclick="openTab('ftd')">FTD Reports</button>
+            <button class="tab-btn" onclick="openTab('plant')">Plant</button>
         </div>
         
         <!-- Dashboard Tab -->
         <div id="dashboard" class="tab-content active">
-            <h1 class="page-title">Operations Dashboard</h1>
-            
-            <div class="modules-grid">
-                <!-- Plant Operations Module -->
-                <div class="module-card" onclick="openTab('plant')">
-                    <div class="module-icon">🏭</div>
-                    <h3>Plant Operations</h3>
-                    <p class="module-description">
-                        Manage and monitor all plant operations including production, inventory, 
-                        quality control, and maintenance schedules.
-                    </p>
-                </div>
+            <div class="report-card">
+                <h2 class="report-title">Daily Operations Report</h2>
+                <div class="report-date">August 6, 2023</div>
                 
-                <!-- Quarry Module -->
-                <div class="module-card" onclick="openTab('quarry')">
-                    <div class="module-icon">⛏️</div>
-                    <h3>Quarry Management</h3>
-                    <p class="module-description">
-                        Track quarry operations, material extraction, inventory levels, 
-                        and coordinate logistics between quarry and plant.
-                    </p>
-                </div>
-                
-                <!-- Equipment Module -->
-                <div class="module-card" onclick="openTab('equipment')">
-                    <div class="module-icon">🚜</div>
-                    <h3>Equipment Management</h3>
-                    <p class="module-description">
-                        Monitor equipment status, schedule maintenance, track utilization, 
-                        and manage fleet operations.
-                    </p>
-                </div>
-                
-                <!-- FTD Report Module -->
-                <div class="module-card" onclick="openTab('ftd')">
-                    <div class="module-icon">📊</div>
-                    <h3>FTD Reports</h3>
-                    <p class="module-description">
-                        Generate and analyze First-Time Defect reports, track quality metrics, 
-                        and identify improvement opportunities.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="quick-stats">
-                <h3>Quick Statistics</h3>
                 <div class="metrics-grid">
                     <div class="metric-card">
-                        <h3>Today's Production</h3>
+                        <h3>Quarry Output</h3>
                         <div class="metric-value">1,250 tons</div>
-                        <p class="metric-description">Target: 1,500 tons (83% achieved)</p>
+                        <p class="metric-description">
+                            <span class="positive">↑ 5%</span> from yesterday<br>
+                            Target: 1,500 tons (83% achieved)
+                        </p>
                     </div>
                     
                     <div class="metric-card">
-                        <h3>Quarry Output</h3>
-                        <div class="metric-value">1,000 tons</div>
-                        <p class="metric-description">From 3 active quarries</p>
+                        <h3>Plant Production</h3>
+                        <div class="metric-value">1,100 tons</div>
+                        <p class="metric-description">
+                            <span class="neutral">→ Stable</span> from yesterday<br>
+                            Quality compliance: 98.5%
+                        </p>
                     </div>
                     
                     <div class="metric-card">
                         <h3>Equipment Availability</h3>
-                        <div class="metric-value">85%</div>
-                        <p class="metric-description">12/16 units operational</p>
+                        <div class="metric-value">87%</div>
+                        <p class="metric-description">
+                            <span class="negative">↓ 2%</span> from yesterday<br>
+                            2 tippers in maintenance
+                        </p>
                     </div>
-                    
-                    <div class="metric-card">
-                        <h3>FTD Rate</h3>
-                        <div class="metric-value">1.2%</div>
-                        <p class="metric-description">Within target (≤1.5%)</p>
-                    </div>
+                </div>
+                
+                <div class="production-section">
+                    <h3>Key Highlights</h3>
+                    <ul>
+                        <li>Quarry A increased output by 15% after resolving equipment issues</li>
+                        <li>Plant achieved 98.5% quality compliance, exceeding target</li>
+                        <li>Two tippers scheduled for maintenance tomorrow</li>
+                        <li>New safety protocols implemented at all quarry sites</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -517,11 +421,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="production-section">
-                <h3>Tipper Details (To be implemented)</h3>
-                <p>Individual tipper tracking and status monitoring will be added here.</p>
-            </div>
         </div>
         
         <!-- Quarry Management Tab -->
@@ -538,8 +437,8 @@
                             <span>9 hectares</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Current Production:</span>
-                            <span>500 tons/day</span>
+                            <span class="detail-label">Today's Output:</span>
+                            <span>650 tons</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Material Type:</span>
@@ -547,7 +446,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Status:</span>
-                            <span>Active</span>
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                 </div>
@@ -561,8 +460,8 @@
                             <span>3.3 hectares</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Current Production:</span>
-                            <span>300 tons/day</span>
+                            <span class="detail-label">Today's Output:</span>
+                            <span>350 tons</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Material Type:</span>
@@ -570,7 +469,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Status:</span>
-                            <span>Active</span>
+                            <span class="status-active">Active</span>
                         </div>
                     </div>
                 </div>
@@ -584,8 +483,8 @@
                             <span>3 hectares</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Current Production:</span>
-                            <span>200 tons/day</span>
+                            <span class="detail-label">Today's Output:</span>
+                            <span>250 tons</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Material Type:</span>
@@ -593,7 +492,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Status:</span>
-                            <span>Standby</span>
+                            <span class="status-maintenance">Standby</span>
                         </div>
                     </div>
                 </div>
@@ -608,7 +507,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Material Moved:</span>
-                            <span>900 tons</span>
+                            <span>1,250 tons</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Avg. Transport Time:</span>
@@ -616,11 +515,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="production-section">
-                <h3>Monthly Production Summary</h3>
-                <p>Production charts and detailed reports will be displayed here.</p>
             </div>
         </div>
         
@@ -631,26 +525,29 @@
             <div class="metrics-grid">
                 <div class="metric-card">
                     <h3>Today's Production</h3>
-                    <div class="metric-value">1,250 tons</div>
-                    <p class="metric-description">Target: 1,500 tons (83% achieved)</p>
+                    <div class="metric-value">1,100 tons</div>
+                    <p class="metric-description">
+                        <span class="neutral">→ Stable</span> from yesterday<br>
+                        Target: 1,200 tons (92% achieved)
+                    </p>
                 </div>
                 
                 <div class="metric-card">
                     <h3>Today's Dispatch</h3>
-                    <div class="metric-value">1,100 tons</div>
-                    <p class="metric-description">15 shipments completed</p>
+                    <div class="metric-value">1,050 tons</div>
+                    <p class="metric-description">
+                        <span class="positive">↑ 8%</span> from yesterday<br>
+                        18 shipments completed
+                    </p>
                 </div>
                 
                 <div class="metric-card">
                     <h3>Inventory Level</h3>
                     <div class="metric-value">4,500 tons</div>
-                    <p class="metric-description">3 days of production coverage</p>
-                </div>
-                
-                <div class="metric-card">
-                    <h3>Quality Compliance</h3>
-                    <div class="metric-value">98.5%</div>
-                    <p class="metric-description">Above target of 97%</p>
+                    <p class="metric-description">
+                        <span class="negative">↓ 5%</span> from yesterday<br>
+                        3 days of production coverage
+                    </p>
                 </div>
             </div>
             
@@ -669,126 +566,28 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Type A</td>
+                                <td>Limestone Aggregate</td>
                                 <td>500</td>
-                                <td>450</td>
+                                <td>480</td>
                                 <td>1,200</td>
                                 <td>99.1%</td>
                             </tr>
                             <tr>
-                                <td>Type B</td>
-                                <td>400</td>
-                                <td>380</td>
-                                <td>1,500</td>
-                                <td>98.3%</td>
-                            </tr>
-                            <tr>
-                                <td>Type C</td>
+                                <td>Granite Chips</td>
                                 <td>350</td>
-                                <td>270</td>
+                                <td>320</td>
                                 <td>1,800</td>
-                                <td>97.8%</td>
+                                <td>98.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Sandstone Powder</td>
+                                <td>250</td>
+                                <td>250</td>
+                                <td>1,500</td>
+                                <td>97.9%</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-            
-            <div class="production-section">
-                <h3>Maintenance Schedule</h3>
-                <p>Next planned maintenance: August 15, 2023 (Full plant shutdown for 8 hours)</p>
-                <p>Recent maintenance completed: July 30, 2023 (Preventive maintenance)</p>
-            </div>
-        </div>
-        
-        <!-- FTD Reports Tab -->
-        <div id="ftd" class="tab-content">
-            <h1 class="page-title">FTD (First-Time Defect) Reports</h1>
-            
-            <div class="report-filters">
-                <div class="filter-row">
-                    <div class="filter-group">
-                        <label for="time-period">Time Period</label>
-                        <select id="time-period">
-                            <option>Last 7 days</option>
-                            <option selected>Last 30 days</option>
-                            <option>Last quarter</option>
-                            <option>Custom range</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="product-type">Product Type</label>
-                        <select id="product-type">
-                            <option>All Products</option>
-                            <option>Type A</option>
-                            <option>Type B</option>
-                            <option>Type C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="defect-type">Defect Type</label>
-                        <select id="defect-type">
-                            <option>All Defects</option>
-                            <option>Size Variation</option>
-                            <option>Color Inconsistency</option>
-                            <option>Surface Imperfections</option>
-                            <option>Structural Flaws</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="generate-button">Generate Report</button>
-            </div>
-            
-            <div class="report-results">
-                <h3>FTD Report Summary (Last 30 Days)</h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product Type</th>
-                                <th>Total Produced</th>
-                                <th>Defective Units</th>
-                                <th>FTD Rate</th>
-                                <th>Primary Defect</th>
-                                <th>Trend</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Type A</td>
-                                <td>15,000</td>
-                                <td>135</td>
-                                <td>0.9%</td>
-                                <td>Size Variation</td>
-                                <td>↓ Improving</td>
-                            </tr>
-                            <tr class="highlight">
-                                <td>Type B</td>
-                                <td>12,500</td>
-                                <td>225</td>
-                                <td>1.8%</td>
-                                <td>Surface Imperfections</td>
-                                <td>↑ Worsening</td>
-                            </tr>
-                            <tr>
-                                <td>Type C</td>
-                                <td>10,000</td>
-                                <td>120</td>
-                                <td>1.2%</td>
-                                <td>Color Inconsistency</td>
-                                <td>→ Stable</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h4>Key Observations</h4>
-                    <ul>
-                        <li>Type B products showing increased defect rate (1.8% vs target of 1.2%)</li>
-                        <li>Surface imperfections account for 68% of Type B defects</li>
-                        <li>Type A continues to perform well below target defect rate</li>
-                    </ul>
                 </div>
             </div>
         </div>
