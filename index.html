@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGX Minerals - Quality Construction Materials</title>
+    <title>SGX Minerals </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -61,7 +61,7 @@
         /* Hero Section */
         .hero {
             background: #2c3e50;
-            height: 300px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,27 +82,6 @@
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #ff9900;
-            color: white;
-            padding: 22px 45px; /* Increased padding for larger button */
-            font-size: 1.6rem; /* Increased font size */
-            font-weight: 700; /* Bolder font weight */
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn:hover {
-            background: #e68a00;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
         }
         
         /* Products Section */
@@ -190,6 +169,26 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #ff9900;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         
         .service-card:hover {
@@ -260,28 +259,28 @@
         
         .modal-content {
             background: white;
-            padding: 25px; /* Reduced padding for smaller box */
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
-            max-width: 450px; /* Reduced max-width for smaller box */
-            width: 90%; /* Increased percentage width */
+            max-width: 450px;
+            width: 90%;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         
         .modal-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px; /* Reduced gap between buttons */
-            margin-top: 20px; /* Reduced top margin */
+            gap: 10px;
+            margin-top: 20px;
         }
         
         .modal-btn {
-            padding: 10px 8px; /* Reduced padding for smaller buttons */
+            padding: 10px 8px;
             background: #2c3e50;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 0.9rem; /* Slightly smaller font */
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -314,14 +313,9 @@
                 grid-template-columns: 1fr;
             }
             
-            .btn {
-                padding: 18px 30px; /* Adjusted for mobile */
-                font-size: 1.4rem;
-            }
-            
             .modal-content {
-                padding: 20px 15px; /* Adjusted for mobile */
-                max-width: 90%; /* Full width on mobile */
+                padding: 20px 15px;
+                max-width: 90%;
             }
         }
     </style>
@@ -337,19 +331,12 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <button class="btn" id="enterBtn">ENTER PORTAL</button>
-        </div>
-    </section>
-
-  
     <!-- Services Section -->
     <section class="services">
         <div class="container">
+            <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">
                     <div class="service-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
@@ -357,7 +344,7 @@
                     <p>State-of-the-art quarrying with sustainable practices</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Equipement_Mis_report/', '_blank')">
                     <div class="service-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -365,7 +352,7 @@
                     <p>Modern machinery for efficient mineral processing</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Dispatch_WeighBridge_Transport_Billing_system/', '_blank')">
                     <div class="service-icon">
                         <i class="fas fa-truck-loading"></i>
                     </div>
@@ -373,12 +360,20 @@
                     <p>Nationwide supply chain for timely delivery</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Periodic_maintenance/', '_blank')">
                     <div class="service-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Maintenance</h3>
                     <p>Regular equipment maintenance for optimal performance</p>
+                </div>
+                
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Boulder_Weight_bridge/', '_blank')">
+                    <div class="service-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Boulder Weight Bridge</h3>
+                    <p>Accurate weighing solutions for boulder management</p>
                 </div>
             </div>
         </div>
@@ -389,45 +384,52 @@
         <div class="container">
             <div class="plant-content">
                 <div class="plant-info">
+                    <h2>Our State-of-the-Art Processing Plant</h2>
+                    <p>SGX Minerals operates one of the most advanced mineral processing facilities in the region. Our plant incorporates cutting-edge technology to ensure the highest quality products while maintaining environmental sustainability.</p>
+                    <p>With a production capacity of over 500 tons per hour, we can meet the demands of large-scale construction projects while maintaining consistent quality across all our products.</p>
+                    <p>Our dedicated team of engineers and technicians work around the clock to ensure optimal operation and minimal downtime.</p>
+                </div>
+                <div class="plant-image">
+                    Processing Plant Facility
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
+    <!-- Modal (kept as fallback) -->
     <div class="modal" id="portalModal">
         <span class="close-modal" id="closeModal">&times;</span>
         <div class="modal-content">
             <h2>SGX Minerals Portal</h2>
             <p>Select an option to proceed:</p>
             <div class="modal-buttons">
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">Quarry Web </button>
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">Quarry Web</button>
                 <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Equipement_Mis_report/', '_blank')">Equipments Web</button>
                 <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Dispatch_WeighBridge_Transport_Billing_system/', '_blank')">Dispatch Weight Bridge</button>
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Periodic_maintenance/', '_blank')">Periodic Maintenance Web </button>
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Periodic_maintenance/', '_blank')">Periodic Maintenance Web</button>
                 <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Boulder_Weight_bridge/', '_blank')">Boulder Weight Bridge</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Modal functionality
-        const enterBtn = document.getElementById('enterBtn');
+        // You can keep this modal functionality for any future use
         const portalModal = document.getElementById('portalModal');
         const closeModal = document.getElementById('closeModal');
-        
-        enterBtn.addEventListener('click', () => {
-            portalModal.style.display = 'flex';
-        });
-        
-        closeModal.addEventListener('click', () => {
-            portalModal.style.display = 'none';
-        });
         
         window.addEventListener('click', (e) => {
             if (e.target === portalModal) {
                 portalModal.style.display = 'none';
             }
+        });
+        
+        // Add subtle animation to service cards on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
         });
     </script>
 </body>
