@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGX Minerals </title>
+    <title>SGX Minerals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -243,6 +243,24 @@
             color: #666;
         }
         
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-content p {
+            margin: 5px 0;
+        }
+        
         /* Modal */
         .modal {
             display: none;
@@ -299,6 +317,17 @@
             cursor: pointer;
         }
         
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -327,16 +356,24 @@
             <div class="logo-container">
                 <div class="logo">SGX <span>MINERALS</span></div>
             </div>
-            <p class="tagline">Aggregate Divison Ankapalle</p>
+            <p class="tagline">Aggregate Division Ankapalle</p>
         </div>
     </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Quality Minerals & Aggregates</h1>
+            <p>Providing high-quality construction materials since 2005</p>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
-                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">
+                <div class="service-card" onclick="window.open('https://bimal-bp.github.io/Quarry_Web/', '_blank')">
                     <div class="service-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
@@ -396,33 +433,18 @@
         </div>
     </section>
 
-    <!-- Modal (kept as fallback) -->
-    <div class="modal" id="portalModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <h2>SGX Minerals Portal</h2>
-            <p>Select an option to proceed:</p>
-            <div class="modal-buttons">
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">Quarry Web</button>
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Equipement_Mis_report/', '_blank')">Equipments Web</button>
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Dispatch_WeighBridge_Transport_Billing_system/', '_blank')">Dispatch Weight Bridge</button>
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Periodic_maintenance/', '_blank')">Periodic Maintenance Web</button>
-                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Boulder_Weight_bridge/', '_blank')">Boulder Weight Bridge</button>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 SGX Minerals. All rights reserved.</p>
+                <p>Ankapalle, Andhra Pradesh</p>
+                <p>Contact: info@sgxminerals.com | Phone: +91 XXXXX XXXXX</p>
             </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // You can keep this modal functionality for any future use
-        const portalModal = document.getElementById('portalModal');
-        const closeModal = document.getElementById('closeModal');
-        
-        window.addEventListener('click', (e) => {
-            if (e.target === portalModal) {
-                portalModal.style.display = 'none';
-            }
-        });
-        
         // Add subtle animation to service cards on page load
         document.addEventListener('DOMContentLoaded', function() {
             const serviceCards = document.querySelectorAll('.service-card');
