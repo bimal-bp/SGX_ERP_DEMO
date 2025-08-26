@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGX Minerals - Aggregate Side Ankapalle</title>
+    <title>SGX Minerals - Quality Construction Materials</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -58,7 +58,17 @@
             color: #ddd;
         }
         
-
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
         
         .hero::after {
             content: '';
@@ -212,5 +222,270 @@
             color: #2c3e50;
         }
         
-    
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #ff9900;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .modal-btn {
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-btn:hover {
+            background: #ff9900;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">SGX <span>MINERALS</span></div>
+            </div>
+            <p class="tagline">Quality Construction Materials & Solutions</p>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Quality Minerals & Aggregates</h1>
+            <p>Supplying high-grade construction materials for infrastructure development since 2005</p>
+            <button class="btn" id="enterBtn">Enter Portal</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #e0e0e0;">10 MM</div>
+                    <div class="product-info">
+                        <h3>10mm Aggregate</h3>
+                        <p>Ideal for concrete mix and construction applications</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #d0d0d0;">20 MM</div>
+                    <div class="product-info">
+                        <h3>20mm Aggregate</h3>
+                        <p>Perfect for road base and drainage systems</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #c9c9c9;">V SAND</div>
+                    <div class="product-info">
+                        <h3>Manufactured Sand</h3>
+                        <p>High-quality alternative to natural river sand</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #b9b9b9;">40 MM R SAND</div>
+                    <div class="product-info">
+                        <h3>40mm Robo Sand</h3>
+                        <p>Specially graded for plastering and masonry work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Operations</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Quarry Operations</h3>
+                    <p>State-of-the-art quarrying with sustainable practices</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Equipment</h3>
+                    <p>Modern machinery for efficient mineral processing</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>Sales & Distribution</h3>
+                    <p>Nationwide supply chain for timely delivery</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Maintenance</h3>
+                    <p>Regular equipment maintenance for optimal performance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Mineral Avenue, Industry Zone</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sgxminerals.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#products">Products</a></p>
+                    <p><a href="#services">Services</a></p>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Operating Hours</h3>
+                    <p>Monday-Friday: 8:00 AM - 6:00 PM</p>
+                    <p>Saturday: 9:00 AM - 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 SGX Minerals. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="portalModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <h2>SGX Minerals Portal</h2>
+            <p>Select an option to proceed:</p>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Quarry_ppt/', '_blank')">Quarry</button>
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Equipement_Mis_report/', '_blank')">Equipment</button>
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Dispatch_WeighBridge_Transport_Billing_system/', '_blank')">Sales</button>
+                <button class="modal-btn" onclick="window.open('https://github.com/bimal-bp/Periodic_maintenance', '_blank')">Maintenance</button>
+                <button class="modal-btn" onclick="window.open('https://bimal-bp.github.io/Boulder_Weight_bridge/', '_blank')">Boulder Weight Bridge</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const enterBtn = document.getElementById('enterBtn');
+        const portalModal = document.getElementById('portalModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        enterBtn.addEventListener('click', () => {
+            portalModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            portalModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === portalModal) {
+                portalModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
