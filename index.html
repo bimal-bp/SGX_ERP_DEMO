@@ -88,20 +88,21 @@
             display: inline-block;
             background: #ff9900;
             color: white;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 18px 35px; /* Increased padding for larger button */
+            font-size: 1.4rem; /* Increased font size */
+            font-weight: 700; /* Bolder font weight */
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px; /* Slightly larger border radius */
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
         }
         
         .btn:hover {
             background: #e68a00;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px); /* More pronounced hover effect */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
         }
         
         /* Products Section */
@@ -259,33 +260,35 @@
         
         .modal-content {
             background: white;
-            padding: 40px;
+            padding: 30px; /* Reduced padding for smaller box */
             border-radius: 10px;
             text-align: center;
-            max-width: 600px;
-            width: 90%;
+            max-width: 500px; /* Reduced max-width for smaller box */
+            width: 85%; /* Slightly increased percentage width */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         
         .modal-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px; /* Reduced gap between buttons */
+            margin-top: 25px; /* Reduced top margin */
         }
         
         .modal-btn {
-            padding: 15px;
+            padding: 12px 10px; /* Reduced padding for smaller buttons */
             background: #2c3e50;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1rem;
+            font-size: 0.95rem; /* Slightly smaller font */
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .modal-btn:hover {
             background: #ff9900;
+            transform: translateY(-2px);
         }
         
         .close-modal {
@@ -310,6 +313,15 @@
             .plant-content {
                 grid-template-columns: 1fr;
             }
+            
+            .btn {
+                padding: 15px 25px; /* Adjusted for mobile */
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                padding: 25px 20px; /* Adjusted for mobile */
+            }
         }
     </style>
 </head>
@@ -327,7 +339,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <button class="btn" id="enterBtn">Enter Portal</button>
+            <button class="btn" id="enterBtn">ENTER PORTAL</button>
         </div>
     </section>
 
